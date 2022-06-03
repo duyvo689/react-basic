@@ -1,38 +1,104 @@
 .App {
-  text-align: center;
+  // text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+$bg-display   : rgb(48, 194, 234);
+$bg-nav-app   : rgb(8, 159, 201);
+$bg-nav-board : rgb(25, 186, 230);
+$bg-list-color: rgb(199, 234, 42);
+$grap         :15px;
+
+$height-header:36px;
+$height-footer:36px;
+
+$border-radius:5px;
+
+body {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+a {
+  text-decoration: none;
+}
+
+.jod-manager {
+  height            : 100vh;
+  display           : grid;
+  grid-template-rows: 40px 50px 1fr;
+  background-color  : $bg-display;
+
+
+  .navbar {
+    padding-left: 20px;
+    display     : flex;
+    align-items : center;
+
+    &.app {
+      background-color: $bg-nav-app;
+      font-size       : 1, 5rem;
+    }
+
+    &.board {
+      background-color: $bg-nav-board;
+      font-size       : 1, 1rem;
+    }
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  .board-colums {
+    display   : flex;
+    overflow-x: auto;
 
-.App-link {
-  color: #61dafb;
-}
+    .column {
+      flex   : 0 0 auto;
+      width  : 350px;
+      height : calc(100% - #{$grap});
+      margin : 10px 20px;
+      display: block;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+
+      >* {
+        background-color: $bg-list-color;
+        color           : #000;
+      }
+
+      header {
+        padding-left           : 16px;
+        height                 : $height-header;
+        line-height            : $height-header;
+        font-size              : 20px;
+        font-weight            : bold;
+        border-top-left-radius : $border-radius;
+        border-top-right-radius: $border-radius;
+      }
+
+      footer {
+        padding-left              : 16px;
+        height                    : $height-footer;
+        line-height               : $height-footer;
+        border-bottom-left-radius : $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+
+      ul {
+        list-style-type: none;
+        margin         : 0;
+        max-height     : calc(100% - #{$height-header} - #{$height-footer});
+        overflow-y     : auto;
+
+        li {
+          background-color: #fff;
+          padding         : $grap;
+          margin-bottom   : $grap;
+          margin-top      : $grap;
+          margin-right    : 26px;
+          border-radius   : 2px;
+          margin-left     : 0;
+          box-shadow      : 0 1px 1px rgb(0, 0, 1);
+
+
+        }
+      }
+
+    }
   }
 }
